@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 use App\Author;
+// use App\Models\Author;
+
 class AuthorSeeder extends Seeder
 {
     /**
@@ -14,14 +16,16 @@ class AuthorSeeder extends Seeder
     public function run()
     {
 
-
+        // Author::factory()->count(50)->create();
         factory(Author::class, 50)->create();
 
-        // DB::table("authors")->insert([
-        //     'name' => 'Vardenis' ,
-        //     'surname' => 'Pavardenis',
-        //     'username' => 'Slapyvardis'
-        // ]);
+        // for($i=0; $i<=50; $i++) {
+        //     DB::table("authors")->insert([
+        //         'name' => 'Vardenis'.$i ,
+        //         'surname' => 'Pavardenis'.$i,
+        //         'username' => 'Slapyvardis'.$i
+        //     ]);
+        // }
 
         // DB::table("authors")->insert([
         //     'name' => 'Vardenis1' ,

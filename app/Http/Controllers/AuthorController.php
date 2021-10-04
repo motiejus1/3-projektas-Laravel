@@ -14,7 +14,8 @@ class AuthorController extends Controller
      */
     public function index() //atsakingas uz duomenu bazes irasu atvaizdavima
     {
-        return view("author.index");
+        $authors = Author::all(); // SELECT, pasirenka visus irasus is lenteles Authors
+        return view("author.index",[ "authors"=> $authors]);
     }
 
     /**
@@ -24,7 +25,7 @@ class AuthorController extends Controller
      */
     public function create() //Atsakinga uz formos atvaizdavima, kuri leidzia mums prideti nauja irasa
     {
-        //
+        return view("author.create");
     }
 
     /**
@@ -35,7 +36,16 @@ class AuthorController extends Controller
      */
     public function store(Request $request) // atsakinga uz duomenu paemima is formos ir irasyma i duomenu baze
     {
-        //
+        $author = new Author;
+
+        // DB stulpelio pavadinimas = $GET/$POST["author_name"] input laukelio vardas
+        $author->name = $request->author_name;
+        $author->surname = $request->author_surname;
+        $author->username = $request->author_username;
+
+        $author->save();//INSERT komanda i duomenu baze
+
+        return redirect()->route("author.index");
     }
 
     /**
@@ -55,9 +65,9 @@ class AuthorController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit(Author $author) //atsakinga uz authoriaus redagavo formos atvaizdavima
     {
-        //
+        return view("author.edit", ["author"=> $author]);
     }
 
     /**
@@ -67,7 +77,7 @@ class AuthorController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Author $author) //funkcija, kuri vykdo autoriaus duomenu atnaujinima DB
     {
         //
     }
