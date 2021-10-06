@@ -56,7 +56,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)// atvaizduoja kazkoki tai konkretu irasa
     {
-        //
+        return view('author.show', ['author' => $author]);
     }
 
     /**

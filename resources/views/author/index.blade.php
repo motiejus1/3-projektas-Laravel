@@ -13,7 +13,7 @@
     @foreach ($authors as $author)
         <tr>
             <td>{{ $author->id }}</td>
-            <td>{{ $author->name }}</td>
+            <td><a href="{{route('author.show', [$author])}}">{{ $author->name }}</a></td>
             <td>{{ $author->surname }}</td>
             <td>{{ $author->username }}</td>
             {{-- //redagavimoForma.php?ID=5  --}}
