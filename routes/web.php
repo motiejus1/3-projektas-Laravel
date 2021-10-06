@@ -26,6 +26,7 @@ Route::prefix('authors')->group(function () {
     // Route::post('store', 'App\Http\Controllers\AuthorController@store')->name('author.store');
     // Route::get('edit/{author}', 'App\Http\Controllers\AuthorController@edit')->name('author.edit');
     // Route::post('update/{author}', 'App\Http\Controllers\AuthorController@update')->name('author.update');
+    // Route::post('delete/{author}', 'App\Http\Controllers\AuthorController@destroy' )->name('author.destroy');
 
     Route::get('','AuthorController@index')->name('author.index');
     Route::get('create', 'AuthorController@create')->name('author.create');
@@ -34,5 +35,7 @@ Route::prefix('authors')->group(function () {
     //edit.php?ID=5
     Route::get('edit/{author}', 'AuthorController@edit')->name('author.edit');
     Route::post('update/{author}', 'AuthorController@update')->name('author.update');
+    //istrinti irasa, delete.php?ID=
+    Route::post('delete/{author}', 'AuthorController@destroy' )->name('author.destroy');
     // get/post
 });

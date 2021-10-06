@@ -54,7 +54,7 @@ class AuthorController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Author $author)// atvaizduoja kazkoki tai konkretu irasa
     {
         //
     }
@@ -65,7 +65,7 @@ class AuthorController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author) //atsakinga uz authoriaus redagavo formos atvaizdavima
+    public function edit(Author $author) //atsakinga uz autoriaus redagavo formos atvaizdavima
     {
         return view("author.edit", ["author"=> $author]);
     }
@@ -79,7 +79,15 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author) //funkcija, kuri vykdo autoriaus duomenu atnaujinima DB
     {
-        //
+
+        //DB lenteles stulpelio pavidinimas $_GET/POST[]
+        $author->name = $request->author_name;
+        $author->surname = $request->author_surname;
+        $author->username = $request->author_username;
+
+        $author->save(); //UPDATE
+
+        return redirect()->route("author.index"); //header(Location: index.blade.php)
     }
 
     /**
@@ -88,8 +96,9 @@ class AuthorController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy(Author $author) // funkcija istrinanti irasa is duomenu bazes
     {
-        //
+        $author->delete();
+        return redirect()->route("author.index");
     }
 }

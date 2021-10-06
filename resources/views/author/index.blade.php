@@ -17,7 +17,16 @@
             <td>{{ $author->surname }}</td>
             <td>{{ $author->username }}</td>
             {{-- //redagavimoForma.php?ID=5  --}}
-            <td><a href="{{route('author.edit', [$author]) }}">Edit</a></td>
+            <td>
+                <a href="{{route('author.edit', [$author]) }}">Edit</a>
+                <form method="POST" action="{{route('author.destroy', [$author]) }}">
+                    @csrf
+                    <button type="submit">Delete</button>
+                    {{-- <a type="submit" --}}
+                </form>
+            </td>
+
+
         </tr>
     @endforeach
 
